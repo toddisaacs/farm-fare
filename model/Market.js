@@ -37,4 +37,5 @@ marketSchema.index({
   location: '2dsphere'
 });
 
+
 module.exports = mongoose.model('Market', marketSchema);

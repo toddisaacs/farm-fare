@@ -1,0 +1,14 @@
+[
+  {
+    "_id":"59e64d84c880a7942aa32cbd",
+    "name":"Dale's Fresh Produce",
+    "description":"Lots of good stuff",
+    "tags":["Fresh Corn"],
+    "location": {
+      "type":"Point",
+      "coordinates":[-86.447633,39.872760],
+      "address":"E County Rd 750 N"
+    },
+    "photo":"23we20df-e238-4104-be4c-a267bd32e257.jpeg"
+  }
+]
