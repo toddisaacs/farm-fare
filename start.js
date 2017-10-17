@@ -6,14 +6,24 @@
 const app = require('./app');
 const debug = require('debug')('farm-fare:server');
 const http = require('http');
+const mongoose = require('mongoose');
 
 //grab config
-require('dotenv').config({path: 'variables.env'});
 
+require('dotenv').config({ path: './variables.env' });
+
+//connect to DB
+mongoose.connect(process.env.DATABASE_URI, { useMongoClient: true });
+mongoose.Promise = global.Promise;
+mongoose.connection.on('error', (err) => { 
+  console.log(`Mongoose Connection ERROR → ${err.message}`);
+});
+
+//import our data models
+require('./model/Market');
 /**
  * Get port from environment and store in Express.
  */
-
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
