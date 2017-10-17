@@ -1,5 +1,9 @@
 extends layout
 
+include mixins/_marketCard
+
 block content
   .inner
     h1= title
+      each market in markets
+        +marketCard(market)

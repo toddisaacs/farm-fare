@@ -1,11 +1,3 @@
-
-/**
- * Module dependencies.
- */
-
-const app = require('./app');
-const debug = require('debug')('farm-fare:server');
-const http = require('http');
 const mongoose = require('mongoose');
 
 //grab config
@@ -21,6 +13,12 @@ mongoose.connection.on('error', (err) => {
 
 //import our data models
 require('./model/Market');
+
+//Now start up the node server
+const app = require('./app');
+const debug = require('debug')('farm-fare:server');
+const http = require('http');
+
 /**
  * Get port from environment and store in Express.
  */

@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const marketController = require('../controllers/marketController');
+const { catchErrors } = require('../handlers/errorHandlers');
 
 /* GET home page. */
 router.get('/', marketController.homePage);
 
-router.get('/markets', marketController.getMarkets);
+router.get('/markets', catchErrors(marketController.getMarkets));
+router.get('/markets/:id', catchErrors(marketController.getMarketById));
 
 module.exports = router;

@@ -1,0 +1,4 @@
+mixin marketCard(market = {})
+  .market
+    h2.title
+      a(href=`/markets/${market._id}`) #{market.name}
