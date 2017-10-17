@@ -1,7 +1,20 @@
 doctype html
 html
   head
-    title= title
+    title= `${title}`
     link(rel='stylesheet', href='/dist/style.css')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
   body
+    block header
+      header.top
+        nav.nav
+          .nav__section.nav_section--pages
+            li.nav__item
+              a.nav__link.nav__link--logo(href="/") Logo
+            li.nav__item
+              a.nav__link(href="/markets") Markets
+    block messages
     block content
+    block scripts
+      script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY_VEGGIE_STAND}&libraries=places`)
+      script(src="/dist/App.bundle.js")

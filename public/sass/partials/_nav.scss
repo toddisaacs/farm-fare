@@ -1,0 +1,26 @@
+.nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: $green;
+  color: $offWhite;
+  &__section {
+    display: flex;
+  }
+  &__item {
+    display: flex;
+  }
+  &__link {
+    display:block;
+    display:flex;
+    text-transform: uppercase;
+    text-decoration: none;
+    flex-direction: column;
+    color: $offWhite;
+    padding: 1.2rem;
+    &:hover {
+      color: $darkGreen;
+    }
+  }
+}

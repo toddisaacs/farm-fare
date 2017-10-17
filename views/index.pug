@@ -2,5 +2,7 @@ extends layout
 
 block content
   .inner
-    h1= title
-    p Welcome to #{title} 
+    h1= `Welcome to ${title}`
+    .map
+       #map
+          p Loading Map...

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+//Add something a bit crazy so we can verify font load, will change later
+$indy-flower:  'Indie Flower', serif;  
+
+html {
+  font-family: $indy-flower, sans-serif;
+  font-size:10px;
+}
+
+body {
+  font-size:1.5rem;
+  color:$darkGreen;
+}

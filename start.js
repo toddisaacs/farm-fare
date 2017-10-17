@@ -7,6 +7,9 @@ const app = require('./app');
 const debug = require('debug')('farm-fare:server');
 const http = require('http');
 
+//grab config
+require('dotenv').config({path: 'variables.env'});
+
 /**
  * Get port from environment and store in Express.
  */

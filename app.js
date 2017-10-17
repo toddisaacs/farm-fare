@@ -5,6 +5,8 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+const helpers = require('./helpers');
+
 const index = require('./routes/index');
 const users = require('./routes/users');
 
@@ -21,6 +23,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use((req, res, next) => {
+  res.locals.h = helpers;
+  res.locals.currentPath = req.path;
+  next();
+});
 
 app.use('/', index);
 app.use('/users', users);
