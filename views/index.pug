@@ -4,5 +4,7 @@ block content
   .inner
     h1= `Welcome to ${title}`
     .map
-       #map
-          p Loading Map...
+      span.map-spinner.fa.fa-spinner.fa-pulse.fa-3x.fa-fw
+      #map
+        p Loading Map...
+  

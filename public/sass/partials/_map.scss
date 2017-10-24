@@ -1,8 +1,18 @@
+$mapHeight: 500px;
+
 .map {
   padding: 15px;
   background: $darkGreen;
 }
 
 #map {
-  height: 500px;
+  height: $mapHeight;
 }
+
+.map-spinner {
+  position: absolute;
+  display: none;
+  z-index: 9999;
+  color: $green;
+}
+
