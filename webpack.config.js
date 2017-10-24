@@ -24,6 +24,19 @@ const styles = {
   use: ExtractTextPlugin.extract(['css-loader?sourceMap', postcss, 'sass-loader?sourceMap'])
 };
 
+
+const fonts = {
+  test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+  use: [{
+    loader: 'file-loader',
+    options: {
+      name: '[name].[ext]',
+      outputPath: 'fonts/', // where the fonts will go
+      publicPath: '../' // override the default path
+    }
+  }]
+};
+
 const uglify = new webpack.optimize.UglifyJsPlugin({ // eslint-disable-line
   compress: { warnings: false }
 });
@@ -41,7 +54,7 @@ const config = {
 
   
   module: {
-    rules: [javascript, styles]
+    rules: [javascript, fonts, styles]
   },
 
   // plugins: [uglify]
