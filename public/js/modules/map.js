@@ -1,4 +1,5 @@
 import { $ } from  './bling';
+import { showProgress, hideProgress } from './utils'
 
 const mapOptions = {
   center: { lat: 39.87, lng: -86.46 },
@@ -6,7 +7,7 @@ const mapOptions = {
 };
 
 var locationOptions = {
-  enableHighAccuracy: false,
+  enableHighAccuracy: true,
   timeout: 6000,
   maximumAge: 60000
 };
@@ -25,18 +26,17 @@ function error(err) {
 };
 
 
+const progressOverlayHtml = `<i class="map-spinner fa fa-spinner fa-pulse fa-3x fa-fw"></i>`;
 
 function makeMap(mapDiv) {
   if (!mapDiv) return;
 
   const map = new google.maps.Map(mapDiv, mapOptions);
-  const spinner = $('.map-spinner');
-  spinner.style.display = 'block';
+  showProgress();
 
   //grab location & update
   getLocation()
   .then((pos) => {
-    console.log(`position ${pos}`);
     const lat = pos.coords.latitude;
     const lng = pos.coords.longitude;   
 
@@ -44,11 +44,12 @@ function makeMap(mapDiv) {
     map.panTo(panPoint)
   })
   .catch((error) => {
-    console.log(`ERROR - ${error}`);
+    console.log('ERROR', error);
   })
   .then(() => {
-    spinner.style.display = 'none';
+    hideProgress();
   });
+
 
   
 }
