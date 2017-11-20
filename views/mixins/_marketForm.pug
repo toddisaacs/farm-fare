@@ -1,0 +1,23 @@
+mixin marketForm(market = {})
+  form(action=`/markets/${market._id || ''}` method="POST" encypt="multipart/form-data" class="card")
+    label(for="name") Name
+    input(type="text" name="name" value=market.name)
+    label(for="description") Description 
+    textarea(name="description")= market.description
+    //- address
+    label(for="address") Address
+    input(type="text" id="address" name="location[address]" value=(market.location && market.location.address))
+    label(for="lng") Address Lat
+    input(type="text" id="lat" name="location[coordinates][0]"  value=(market.location && market.location.coordinates && market.location.coordinates[0]) required)
+    label(for="lng") Address Lng
+    input(type="text" id="lng" name="location[coordinates][1]" value=(market.location && market.location.coordinates && market.location.coordinates[1]) required)
+    //- tags
+    - choices = ['Sweet Corn', 'Green Beans', 'Zuchini']
+    - const tags = market.tags || []
+    ul.tags
+      each choice in choices
+        .tag.tag__choice
+          input(type="checkbox" id=choice name="tags" value=choice checked=(tags.includes(choice)))
+          label(for=choice) #{choice}
+    //- save button
+    input(type="submit" value="save →" class="button" )

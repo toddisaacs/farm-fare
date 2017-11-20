@@ -1,0 +1,28 @@
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: block;
+  margin-right: 1rem;
+  &__choice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input {
+      width: auto;
+      margin-right: -1.2rem;
+      & + label {
+        color: $white;
+        background: $lightGrey;
+        padding: 1rem 1rem 1rem 1rem;
+      }
+      &:checked + label {
+        background: $green;
+        color: $offWhite;
+      }
+    }
+  }
+}

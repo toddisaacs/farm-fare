@@ -14,3 +14,17 @@ exports.getMarketById = async (req, res) => {
   const market = await Market.findOne({ _id: req.params.id });
   res.render('market', { title: market.name, market });
 };
+
+exports.addMarket = async (req, res) => {
+  res.render('addMarket', { title: 'Add Market' });
+}
+
+exports.createMarket = async (req, res) => {
+  console.log(req.body);
+
+  const market =  (new Market(req.body));
+  console.log(market);
+  await market.save();
+
+  res.redirect('/markets');
+}

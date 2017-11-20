@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Raleway || Raleway:b');
+//@import url('https://fonts.googleapis.com/css?family=Raleway:b');
+
 
 $fa-font-path: "../../node_modules/font-awesome/fonts";
 @import '../../node_modules/font-awesome/scss/font-awesome.scss';
 
 //Add something a bit crazy so we can verify font load, will change later
-$indy-flower:  'Indie Flower', serif;  
+$fonts:  'Indie Flower', 'Raleway', sans-serif;  
 
 html {
-  font-family: $indy-flower, sans-serif;
+  font-family: $fonts, sans-serif;
   font-size:10px;
 }
 
