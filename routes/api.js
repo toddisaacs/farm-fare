@@ -1,3 +1,6 @@
+const marketController = require('../controllers/marketController');
+const { catchErrors } = require('../handlers/errorHandlers');
+
 const express = require('express');
 const router = express.Router();
 
@@ -10,5 +13,7 @@ router.get('/', function(req, res, next) {
 router.get('/markets', (req, res) => {
   res.send('');
 });
+
+router.get('/markets/near', catchErrors(marketController.marketsNear));
 
 module.exports = router;

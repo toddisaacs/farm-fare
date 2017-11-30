@@ -7,10 +7,10 @@ mixin marketForm(market = {})
     //- address
     label(for="address") Address
     input(type="text" id="address" name="location[address]" value=(market.location && market.location.address))
-    label(for="lng") Address Lat
-    input(type="text" id="lat" name="location[coordinates][0]"  value=(market.location && market.location.coordinates && market.location.coordinates[0]) required)
     label(for="lng") Address Lng
-    input(type="text" id="lng" name="location[coordinates][1]" value=(market.location && market.location.coordinates && market.location.coordinates[1]) required)
+    input(type="text" id="lng" name="location[coordinates][0]"  value=(market.location && market.location.coordinates && market.location.coordinates[0]) required)
+    label(for="lng") Address Lat
+    input(type="text" id="lat" name="location[coordinates][1]" value=(market.location && market.location.coordinates && market.location.coordinates[1]) required)
     //- tags
     - choices = ['Sweet Corn', 'Green Beans', 'Zuchini']
     - const tags = market.tags || []
