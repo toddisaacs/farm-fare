@@ -4,7 +4,11 @@ $mapHeight: 500px;
   align-items: center;
   justify-content: center;
   padding: 15px;
-  
+}
+
+#editMap {
+  position: relative;
+  height:200px;
 }
 
 #map {

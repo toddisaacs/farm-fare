@@ -4,6 +4,9 @@ mixin marketForm(market = {})
     input(type="text" name="name" value=market.name)
     label(for="description") Description 
     textarea(name="description")= market.description
+    .map
+      #editMap
+        p Loading Map...
     //- address
     label(for="address") Address
     input(type="text" id="address" name="location[address]" value=(market.location && market.location.address))

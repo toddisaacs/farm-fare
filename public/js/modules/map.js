@@ -7,7 +7,7 @@ const defaultLng = -86.12;
 
 const mapOptions = {
   center: { lat: defaultLat, lng: defaultLng },
-  zoom: 12
+  zoom: 15  
 };
 
 var locationOptions = {
@@ -32,11 +32,23 @@ function error(err) {
 
 const progressOverlayHtml = `<i class="map-spinner fa fa-spinner fa-pulse fa-3x fa-fw"></i>`;
 
+var map_timeout = null;
+var markers = [];
+var marker = null;
+
+function makeEditMap(mapDiv, latDiv, lngDiv) {
+  //showProgress();
+  //setup map on given div
+  const map = createMap(mapDiv);
+
+  return map;
+}
+
 function makeMap(mapDiv) {
   if (!mapDiv) return;
-
-  const map = new google.maps.Map(mapDiv, mapOptions);
+  
   showProgress();
+  const map = createMap(mapDiv);
 
   //grab location & update
   getLocation()
@@ -53,7 +65,18 @@ function makeMap(mapDiv) {
   .then(() => {
     hideProgress();
   });
+
+  return map;
 }
+
+function createMap(mapDiv) {
+  if (!mapDiv) return;
+  const map = new google.maps.Map(mapDiv, mapOptions);
+
+  return map;
+}
+
+
 
 function loadMarkets(map, lat = defaultLat, lng = defaultLng ) {
   //call API
@@ -95,7 +118,6 @@ function loadMarkets(map, lat = defaultLat, lng = defaultLng ) {
       }));
 
     });
-  //Update map location & Zoom
 }
 
 function populateMap() {
@@ -106,6 +128,20 @@ function populateMap() {
     .catch((error) => {
       console.log(`ERROR - ${error}`);
     });
+}
+
+
+//clears the current marker and sets a new one
+function setMarker(newMarker) {
+  if (marker) {
+    marker.setMap(null);
+  }
+
+  marker = newMarker;
+}
+
+function makeMarker(map, latLng) {
+  return new google.maps.Marker({ map: map, position: latLng, title: '' });
 }
 
 function markerDetail(market) {
@@ -124,4 +160,4 @@ function getLocation() {
   });
 }
 
-export { makeMap, getLocation, populateMap};
+export { makeMap, makeEditMap, makeMarker, setMarker, getLocation, populateMap};
