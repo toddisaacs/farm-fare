@@ -40,7 +40,7 @@ exports.marketsNear =  async (req, res) => {
           type: 'Point',
           coordinates
         },
-        $maxDistance: 100000 // 10km
+        $maxDistance: 100000 //km
       }
     }
   };
