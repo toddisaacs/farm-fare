@@ -2,3 +2,12 @@ extends layout
 
 block content
   h1 #{market.name}
+  img(src=h.staticMap(market.location.coordinates)) 
+  div #{market.location.address}
+  div #{market.location.coordinates[0]}
+  div #{market.location.coordinates[1]}
+   - const tags = market.tags || []
+  ul.tags
+    each tag in tags
+      .tag.tag__choice #{tag}
+        
